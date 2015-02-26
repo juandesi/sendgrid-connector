@@ -1,0 +1,8 @@
+target/
+release.properties
+.classpath
+.factorypath
+.project
+.settings/
+*.psd
+dependency-reduced-pom.xml
