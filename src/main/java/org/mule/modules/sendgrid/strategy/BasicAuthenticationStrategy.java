@@ -5,18 +5,13 @@
 
 package org.mule.modules.sendgrid.strategy;
 
+import com.sendgrid.SendGrid;
 import org.mule.api.ConnectionException;
 import org.mule.api.ConnectionExceptionCode;
-import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.ConnectionIdentifier;
-import org.mule.api.annotations.Disconnect;
-import org.mule.api.annotations.TestConnectivity;
-import org.mule.api.annotations.ValidateConnection;
+import org.mule.api.annotations.*;
 import org.mule.api.annotations.components.ConnectionManagement;
 import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.param.ConnectionKey;
-
-import com.sendgrid.SendGrid;
 
 /**
  * OAuth2 Connection Strategy
@@ -24,19 +19,21 @@ import com.sendgrid.SendGrid;
  * @author MuleSoft, Inc.
  */
 @ConnectionManagement(configElementName="config",friendlyName="Configuration")
-public class ConnectorConnectionStrategy
+public class BasicAuthenticationStrategy
 {
 
-	private SendGrid client;
+	private SendGrid sendgrid;
+    private String fromEmail;
 	
     @Connect
-    @TestConnectivity
-    public void connect(@ConnectionKey String username, @Password String password)
+    @TestConnectivity(active= true)
+    public void connect(@ConnectionKey String username, @Password String password, String email)
         throws ConnectionException {
         try{
-        	setClient(new SendGrid(username, password));        	
+        	sendgrid = new SendGrid(username, password);
+            fromEmail = email;
         }catch(Exception e){
-        	throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS,"", e.getMessage());
+        	throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS, "", e.getMessage());
         }
       
     }
@@ -44,29 +41,36 @@ public class ConnectorConnectionStrategy
 
     @Disconnect
     public void disconnect() {
-    	client = null;
+    	sendgrid = null;
     }
 
 
     @ValidateConnection
     public boolean isConnected() {
-        return client != null;
+        return sendgrid != null;
     }
 
 
     @ConnectionIdentifier
     public String connectionId() {
-        return client.toString();
+        return sendgrid.toString();
     }
 
 
-	public SendGrid getClient() {
-		return client;
+	public SendGrid getSendgrid() {
+		return sendgrid;
 	}
 
-
-	public void setClient(SendGrid client) {
-		this.client = client;
+	public void setSendgrid(SendGrid sendgrid) {
+		this.sendgrid = sendgrid;
 	}
+
+    public String getFromEmail() {
+        return fromEmail;
+    }
+
+    public void setFromEmail(String fromEmail) {
+        this.fromEmail = fromEmail;
+    }
 
 }

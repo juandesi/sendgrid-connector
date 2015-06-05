@@ -5,13 +5,13 @@
 
 package org.mule.modules.sendgrid;
 
+import com.sendgrid.SendGrid;
+import com.sendgrid.SendGridException;
 import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Default;
-import org.mule.modules.sendgrid.strategy.ConnectorConnectionStrategy;
-import com.sendgrid.SendGrid;
-import com.sendgrid.SendGridException;
+import org.mule.modules.sendgrid.strategy.BasicAuthenticationStrategy;
 
 /**
  * Anypoint Connector
@@ -22,43 +22,31 @@ import com.sendgrid.SendGridException;
 public class SendGridConnector
 {
 
-	
-	private SendGrid client = null;
-	
     @ConnectionStrategy
-    ConnectorConnectionStrategy connectionStrategy;
+    BasicAuthenticationStrategy connectionStrategy;
 
     @Processor
-    public String sendMail(String to, String from, String subject, @Default("#[payload]") String content) throws SendGridException {
+    public String sendMail(String to, String subject, @Default("#[payload]") String htmlContent) throws SendGridException {
         
     	SendGrid.Email email = new SendGrid.Email();
 	    email.addTo(to);
-	    email.setFrom(from);
+	    email.setFrom(connectionStrategy.getFromEmail());
+        email.setHtml(htmlContent);
 	    email.setSubject(subject);
-	    email.setText(content);
 	    
-	    SendGrid.Response response = null;
-	    
-	    try {
-	         response = client.send(email);
-	        System.out.println(response.getMessage());
-	      }
-	      catch (SendGridException e) {
-	        System.err.println(e);
-	      }
-    	
+	    SendGrid.Response response = connectionStrategy.getSendgrid().send(email);
 	    return response.getMessage();
     }
     
 
-    public ConnectorConnectionStrategy getConnectionStrategy() {
+    public BasicAuthenticationStrategy getConnectionStrategy() {
         return connectionStrategy;
     }
 
-    public void setConnectionStrategy(ConnectorConnectionStrategy connectionStrategy) {
+    public void setConnectionStrategy(BasicAuthenticationStrategy connectionStrategy) {
         this.connectionStrategy = connectionStrategy;
-        client = connectionStrategy.getClient();
-        
     }
+    
+    
 
 }

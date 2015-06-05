@@ -4,21 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.mule.modules</groupId>
     <artifactId>send-grid-connector</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>2.0.1</version>
     <packaging>mule-module</packaging>
     <name>Mule SendGrid Anypoint Connector</name>
-
 
     <parent>
         <groupId>org.mule.tools.devkit</groupId>
         <artifactId>mule-devkit-parent</artifactId>
-        <version>3.6.1-SNAPSHOT</version>
+        <version>3.6.2</version>
     </parent>
 
     <properties>
         <category>Community</category>
         <licensePath>LICENSE.md</licensePath>
-        <devkit.studio.package.skip>false</devkit.studio.package.skip>
     </properties>
     
     <repositories>
@@ -44,5 +42,36 @@
     		<version>2.0.0</version>
     	</dependency>
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <artifactSet>
+                        <includes>
+                            <include>org.apache.httpcomponents:httpcore</include>
+                            <include>org.apache.httpcomponents:httpmime</include>
+                            <include>org.apache.httpcomponents:httpclient</include>
+                        </includes>
+                    </artifactSet>
+                    <relocations>
+                        <relocation>
+                            <pattern>org.apache.httpcomponents</pattern>
+                            <shadedPattern>org.apache.httpcomponents.sendgrid</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     
+      <scm>
+        <connection>scm:git:git://github.com:juandesi/mulesoft-sendgrid-connector.git</connection>
+        <developerConnection>scm:git:git@github.com:juandesi/mulesoft-sendgrid-connector.git</developerConnection>
+        <url>https://github.com/juandesi/mulesoft-sendgrid-connector</url>
+    </scm>
 </project>
