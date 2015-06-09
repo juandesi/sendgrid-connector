@@ -1,25 +1,25 @@
 # SendGrid Anypoint Connector
 
-[Connector description including destination service or application with]
+This connector allows you to send email without having to maintain email servers. It manages all of the technical details using the sendgrid API, from scaling the infrastructure to ISP outreach and reputation monitoring to whitelist services and real time analytics.
+
 
 ## Mule supported versions
-Examples:
-Mule 3.4.x, 3.5.x
-Mule 3.4.1
 
-## Sendgrid API versions
-Sendgrid 2.0.0
-
+* Mule 3.5.x
+* Mule 3.6.x
+* Mule 3.7.x
 
 ## Installation 
 * Clone this repository
 * Compile with Maven: mvn clean install -DskipTests
-* Download Anypoint Devkit Plugin: Help -> Install new software -> Select the Addons UpdateSite -> Select Devkit Plugin and Install. 
-* Import the connector in Anypoint Studio: File --> Import --> Anypoint Connector from External Location
-* Install in Anypoint Studio: Right Click in the connector project --> Anypoint Connector --> Install or Update
-* Last but not Least send tons of EMails!
+* Go to the target generated folder
+* Find the UpdateSite.zip file
+* Go to Studio Help -> Install New Software -> Search for the UpdateSite.zip file -> Install & Restart Studio
+* Now you can use the Connector in your muleapps
 
+## RunningTests
+You need to specify your email, username and password in the .properties file.
+Once you done that, just MvnCleanInstall
 
 ## Reporting Issues
-
 We use GitHub:Issues for tracking issues with this connector. You can report new issues in this same repository

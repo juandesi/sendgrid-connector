@@ -5,13 +5,13 @@
 
 package org.mule.modules.sendgrid.strategy;
 
-import com.sendgrid.SendGrid;
 import org.mule.api.ConnectionException;
 import org.mule.api.ConnectionExceptionCode;
 import org.mule.api.annotations.*;
 import org.mule.api.annotations.components.ConnectionManagement;
 import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.param.ConnectionKey;
+import org.mule.modules.sendgrid.model.SendGrid;
 
 /**
  * OAuth2 Connection Strategy

@@ -38,9 +38,29 @@
     <dependencies>
        	<dependency>
     		<groupId>com.sendgrid</groupId>
-    		<artifactId>sendgrid-java</artifactId>
-    		<version>2.0.0</version>
+    		<artifactId>smtpapi-java</artifactId>
+    		<version>1.2.0</version>
     	</dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20140107</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.3.4</version>
+        </dependency>
     </dependencies>
 
 
@@ -54,14 +74,14 @@
                     <artifactSet>
                         <includes>
                             <include>org.apache.httpcomponents:httpcore</include>
-                            <include>org.apache.httpcomponents:httpmime</include>
                             <include>org.apache.httpcomponents:httpclient</include>
+                            <include>org.apache.httpcomponents:httpmime</include>
                         </includes>
                     </artifactSet>
                     <relocations>
                         <relocation>
-                            <pattern>org.apache.httpcomponents</pattern>
-                            <shadedPattern>org.apache.httpcomponents.sendgrid</shadedPattern>
+                            <pattern>org.apache.http</pattern>
+                            <shadedPattern>org.apache.http.sendgrid</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>
@@ -74,4 +94,5 @@
         <developerConnection>scm:git:git@github.com:juandesi/mulesoft-sendgrid-connector.git</developerConnection>
         <url>https://github.com/juandesi/mulesoft-sendgrid-connector</url>
     </scm>
+
 </project>

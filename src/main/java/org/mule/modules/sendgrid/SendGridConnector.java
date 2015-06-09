@@ -5,12 +5,12 @@
 
 package org.mule.modules.sendgrid;
 
-import com.sendgrid.SendGrid;
-import com.sendgrid.SendGridException;
 import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Default;
+import org.mule.modules.sendgrid.model.SendGrid;
+import org.mule.modules.sendgrid.model.SendGridException;
 import org.mule.modules.sendgrid.strategy.BasicAuthenticationStrategy;
 
 /**
