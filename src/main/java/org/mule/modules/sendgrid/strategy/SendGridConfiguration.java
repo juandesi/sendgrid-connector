@@ -2,16 +2,17 @@ package org.mule.modules.sendgrid.strategy;
 
 import com.sendgrid.SendGrid;
 import com.sendgrid.SendGridException;
+import org.apache.cxf.common.util.StringUtils;
 import org.mule.api.ConnectionException;
 import org.mule.api.ConnectionExceptionCode;
 import org.mule.api.annotations.*;
 import org.mule.api.annotations.components.ConnectionManagement;
 import org.mule.api.annotations.display.FriendlyName;
 import org.mule.api.annotations.display.Password;
-import org.mule.api.annotations.display.Path;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Email;
 import org.mule.api.annotations.param.Optional;
+import org.mule.modules.sendgrid.model.TemplateResolver;
 
 /**
  * OAuth2 Connection Strategy
@@ -22,18 +23,14 @@ import org.mule.api.annotations.param.Optional;
 public class SendGridConfiguration
 {
 	private SendGrid sendgrid;
+    private TemplateResolver templateResolver;
 
     @Email
-    @FriendlyName("Sender EMail")
+    @FriendlyName("Sender Email")
     @Required
     @Configurable
     private String email;
 
-    @Configurable
-    @Optional
-    @Path
-    @FriendlyName("HTML Template")
-    private String templatePath;
 
     @Configurable
     @Optional
@@ -44,18 +41,15 @@ public class SendGridConfiguration
     public void connect(@ConnectionKey String username, @Password String password)
         throws ConnectionException
     {
-        try{
-        	this.sendgrid = new SendGrid(username, password);
-        }catch(Exception e){
-        	throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS, "", e.getMessage());
-        }
-
+        sendgrid = new SendGrid(username, password);
+        templateResolver = new TemplateResolver(username,password);
     }
 
-    @TestConnectivity(label = "Send an EMail to Test Connection")
+    @TestConnectivity(label = "Send Test Email")
     public void testConnect(@ConnectionKey String username, @Password String password)
         throws ConnectionException
     {
+        connect(username,password);
         SendGrid.Email testEmail = new SendGrid.Email();
         testEmail.setFromName("Sendgrid Connector")
                 .setFrom(email)
@@ -64,7 +58,7 @@ public class SendGridConfiguration
                 .addTo(email);
 
         try {
-            if(this.sendgrid.send(testEmail).getMessage().equals("")){
+            if(!sendgrid.send(testEmail).getMessage().contains("success")){
                 throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS,"","Incorrect User or Password");
             }
         } catch (SendGridException e) {
@@ -95,16 +89,8 @@ public class SendGridConfiguration
 		this.sendgrid = sendgrid;
 	}
 
-    public String getTemplatePath() {
-        return templatePath;
-    }
-
-    public void setTemplatePath(String templatePath) {
-        this.templatePath = templatePath;
-    }
-
     public String getSenderName() {
-        return senderName;
+        return StringUtils.isEmpty(senderName)?email:senderName;
     }
 
     public void setSenderName(String senderName) {
@@ -119,4 +105,11 @@ public class SendGridConfiguration
         this.email = email;
     }
 
+    public TemplateResolver getTemplateResolver() {
+        return templateResolver;
+    }
+
+    public void setTemplateResolver(TemplateResolver templateResolver) {
+        this.templateResolver = templateResolver;
+    }
 }

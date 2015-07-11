@@ -3,17 +3,19 @@ package org.mule.modules.sendgrid.category;
 import org.mule.api.annotations.MetaDataKeyRetriever;
 import org.mule.api.annotations.MetaDataRetriever;
 import org.mule.api.annotations.components.MetaDataCategory;
-import org.mule.common.metadata.*;
+import org.mule.common.metadata.DefaultMetaData;
+import org.mule.common.metadata.DefaultMetaDataKey;
+import org.mule.common.metadata.MetaData;
+import org.mule.common.metadata.MetaDataKey;
 import org.mule.common.metadata.builder.DefaultMetaDataBuilder;
 import org.mule.common.metadata.builder.DynamicObjectBuilder;
 import org.mule.common.metadata.datatype.DataType;
 import org.mule.modules.sendgrid.SendGridConnector;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Category which can differentiate between input or output MetaDataRetriever
@@ -35,30 +37,38 @@ public class  TemplateMetadataCategory {
     @MetaDataKeyRetriever
     public List<MetaDataKey> getMetaDataKeys() throws Exception {
         List<MetaDataKey> keys = new ArrayList<>();
-        keys.add(new DefaultMetaDataKey("PlaceHolders", "PlaceHolders"));
+        Map<String, String> templates = connector.getConfig().getTemplateResolver().getTemplates();
+        for (String template : templates.keySet()) {
+            keys.add(new DefaultMetaDataKey(templates.get(template), template));
+        }
         return keys;
     }
 
     @MetaDataRetriever
     public MetaData getMetaData(MetaDataKey key) throws Exception {
         DefaultMetaDataBuilder builder = new DefaultMetaDataBuilder();
-        DynamicObjectBuilder<?> holders = builder.createDynamicObject(key.getId());
-        for (String holder : getHolders()) {
+        String template = connector.getConfig().getTemplateResolver().getTemplateAsString(key.getId());
+        DynamicObjectBuilder<?> holders = builder.createDynamicObject(key.getDisplayName());
+        for (String holder : getHolders(template)) {
             holders.addSimpleField(holder, DataType.STRING);
         }
-        MetaDataModel model = builder.build();
-        return new DefaultMetaData(model);
+        return new DefaultMetaData(builder.build());
     }
 
 
 
-    private Set<String> getHolders(){
+    private Set<String> getHolders(String template){
         Set<String> holders = new HashSet<>();
-        holders.add("User");
-        holders.add("Name");
-        holders.add("Name");
+        Pattern pattern = Pattern.compile("(&lt;|<)%\\S+%(&gt;|>)");
+        Matcher matcher = pattern.matcher(template);
+        while(matcher.find()){
+            if(!matcher.group(1).equals("subject")){
+                holders.add(matcher.group(1));
+            }
+            template = template.substring(template.indexOf(matcher.group()) + matcher.group().length());
+            matcher = pattern.matcher(template);
+        }
         return holders;
-        //connector.getTemplateAsString();
     }
 
     public SendGridConnector getConnector() {
