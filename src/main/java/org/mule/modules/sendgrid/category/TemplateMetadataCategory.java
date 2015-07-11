@@ -17,23 +17,13 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Category which can differentiate between input or output MetaDataRetriever
- */
 @MetaDataCategory
 public class  TemplateMetadataCategory {
 
-    /**
-     * If you have a service that describes the entities, you may want to use
-     * that through the connector. Devkit will inject the connector, after
-     * initializing it.
-     */
+
     @Inject
     private SendGridConnector connector;
 
-    /**
-     * Retrieves the list of keys
-     */
     @MetaDataKeyRetriever
     public List<MetaDataKey> getMetaDataKeys() throws Exception {
         List<MetaDataKey> keys = new ArrayList<>();
@@ -55,20 +45,18 @@ public class  TemplateMetadataCategory {
         return new DefaultMetaData(builder.build());
     }
 
-
-
     private Set<String> getHolders(String template){
         Set<String> holders = new HashSet<>();
-        Pattern pattern = Pattern.compile("(&lt;|<)%\\S+%(&gt;|>)");
+        Pattern pattern = Pattern.compile("(&lt;%\\S+%&gt;|<%\\S+%>)");
         Matcher matcher = pattern.matcher(template);
         while(matcher.find()){
-            if(!matcher.group(1).equals("subject")){
-                holders.add(matcher.group(1));
-            }
-            template = template.substring(template.indexOf(matcher.group()) + matcher.group().length());
-            matcher = pattern.matcher(template);
+            holders.add(cleanHolder(matcher.group()));
         }
         return holders;
+    }
+
+    private String cleanHolder(String holder) {
+        return holder.replaceAll("(&lt;%|%&gt;|<%|%>)","");
     }
 
     public SendGridConnector getConnector() {

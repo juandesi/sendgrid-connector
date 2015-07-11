@@ -57,7 +57,7 @@ public class SendGridConnector
     }
 
     private String formatSubstitutionKey(String key) {
-        return "<%"+key+"%>";
+        return "&lt;%"+key+"%&gt;>";
     }
 
     private SendGrid.Email buildBasicEmail(String subject, List<String> sendTo) {
