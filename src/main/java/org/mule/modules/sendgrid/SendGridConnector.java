@@ -68,9 +68,7 @@ public class SendGridConnector
                 .setSubject(subject);
     }
 
-    private String sendMail(SendGrid.Email email)
-            throws SendGridConnectorException
-    {
+    private String sendMail(SendGrid.Email email) throws SendGridConnectorException {
         try {
             return config.getSendgrid().send(email).getMessage();
         } catch (SendGridException e) {

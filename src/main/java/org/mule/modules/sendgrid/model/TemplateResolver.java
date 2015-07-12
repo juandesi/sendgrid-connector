@@ -41,7 +41,13 @@ public class TemplateResolver {
 
         WebTarget webTarget = getWebTarget().path("templates/").path(tempID);
         String output = sendRequest(webTarget);
-        JSONArray versions = new JSONObject(output).getJSONArray("versions");
+        JSONObject jsonObject = new JSONObject(output);
+
+        if(!jsonObject.has("versions")){
+            return "";
+        }
+
+        JSONArray versions = jsonObject.getJSONArray("versions");
 
         for (int i = 0; i < versions.length(); i++) {
             JSONObject version = versions.getJSONObject(i);
@@ -50,7 +56,7 @@ public class TemplateResolver {
             }
         }
 
-        return null;
+        return "";
     }
 
     public Map<String,String> getTemplates(){
@@ -58,7 +64,11 @@ public class TemplateResolver {
         HashMap<String, String> ids = new HashMap<String, String>();
         WebTarget webTarget = getWebTarget().path("templates");
         String output = sendRequest(webTarget);
-        JSONArray templates = new JSONObject(output).getJSONArray("templates");
+        JSONObject jsonObject = new JSONObject(output);
+        if(!jsonObject.has("templates")){
+            return ids;
+        }
+        JSONArray templates = jsonObject.getJSONArray("templates");
 
         for (int i = 0; i < templates.length(); i++) {
             ids.put(templates.getJSONObject(i).getString("name"), templates.getJSONObject(i).getString("id"));
