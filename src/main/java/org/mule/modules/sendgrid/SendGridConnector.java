@@ -46,18 +46,18 @@ public class SendGridConnector
     {
         SendGrid.Email email = buildBasicEmail(subject, sendTo).setTemplateId(key);
         for(String substitution : substitutions.keySet()){
-            if(substitution.equals("body")){
-                email.setHtml(substitution).setText(substitution);
+            String value = substitutions.get(substitution).toString();
+            if(substitution.equals("body")) {
+                email.setHtml(value).setText(value);
             }else {
-                substitution = formatSubstitutionKey(substitution);
-                email.addSubstitution(substitution, new String[]{substitutions.get(substitution).toString()});
+                email.addSubstitution(formatSubstitutionKey(substitution), new String[]{value});
             }
         }
         return sendMail(email);
     }
 
     private String formatSubstitutionKey(String key) {
-        return "&lt;%"+key+"%&gt;>";
+        return "&lt;%"+key+"%&gt;";
     }
 
     private SendGrid.Email buildBasicEmail(String subject, List<String> sendTo) {
