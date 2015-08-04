@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.mule.modules</groupId>
     <artifactId>send-grid-connector</artifactId>
-    <version>2.0.1</version>
+    <version>3.0.1</version>
     <packaging>mule-module</packaging>
     <name>Mule SendGrid Anypoint Connector</name>
 
