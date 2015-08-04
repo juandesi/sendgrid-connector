@@ -1,0 +1,3 @@
+<!-- BEGIN_INCLUDE(send-grid:my-processor) -->
+    <send-grid:my-processor config-ref="" content="#[map-payload:content]" />
+<!-- END_INCLUDE(send-grid:my-processor) -->

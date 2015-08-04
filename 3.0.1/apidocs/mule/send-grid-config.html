@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule SendGrid Anypoint Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+<title>
+
+  SendGridConnector
+
+
+| Mule SendGrid Anypoint Connector
+
+</title>
+<link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../", "../assets/");
+</script>
+<script src="../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule SendGrid Anypoint Connector</span>
+    
+    <ul id="header-tabs" class="mule">
+    
+    	<li id="guide"><a href="../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../')"
+                      onkeyup="return search_changed(event, false, '../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+<div class="g-unit" id="all-content">
+
+<div id="api-info-block">
+
+<div class="sum-details-links">
+
+Summary:
+<a href="#lconfig">Configuration</a>
+
+
+
+</div><!-- end sum-details-links -->
+
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF MODULE DATA ======== -->
+
+<div id="jd-header">
+    org.mule.modules
+<h1>send-grid-connector</h1>
+    config
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+
+
+<br/>
+
+<div class="jd-tagdata">
+      <table class="jd-tagtable">
+        <tbody><tr>
+          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/send-grid</td>
+        </tr><tr>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/send-grid/current/mule-send-grid.xsd&nbsp;&nbsp;(<a href="send-grid-schema.html">View Schema</a>)</td>
+        </tr>
+<tr>
+          <th>Schema Version</th><td>1.0</td>
+        </tr>
+<tr>
+          <th>Minimum Mule Version</th><td>3.2</td>
+        </tr>
+    </tbody></table>
+  </div>
+
+<div class="jd-descr">
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+<!-- Config -->
+
+<!-- =========== CONFIG SUMMARY =========== -->
+<table id="lconfig" class="jd-sumtable"><tr><th colspan="12">Configuration</th></tr>
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/send-grid-config.html#config">&lt;send-grid:config&gt;</a></nobr>
+        <div class="jd-descrdiv">Configure an instance of this module</div>
+  </td></tr>
+</table>
+
+
+
+<table id="promethods" class="jd-sumtable">
+<tr><th colspan="12">Message Processors<br/><span style="font-weight: 200;"></span></th></tr>
+    
+    
+    <!-- ========== MESSAGE PROCESSOR SUMMARY =========== -->
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/send-grid-config.html#send-from-template">&lt;send-grid:send-from-template&gt;</a></nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../mule/send-grid-config.html#send-simple-email">&lt;send-grid:send-simple-email&gt;</a></nobr>
+        
+  </td></tr>
+
+
+
+    
+    
+    
+</table>
+
+
+
+
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+
+<!-- ========= CONFIGURATION DETAIL ======== -->
+<A NAME="config"></A>
+<h2>Configuration</h2>
+<p>To use the this module within a flow the namespace to the module must be included. The resulting flow will look
+similar to the following:</p>
+<pre>
+&lt;mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:send-grid="http://www.mulesoft.org/schema/mule/send-grid"
+      xsi:schemaLocation="
+               http://www.mulesoft.org/schema/mule/core
+               http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+               http://www.mulesoft.org/schema/mule/send-grid
+               http://www.mulesoft.org/schema/mule/send-grid/current/mule-send-grid.xsd"&gt;
+
+      &lt;!-- here goes your flows and configuration elements --&gt;
+
+&lt;/mule&gt;
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========= MESSAGE PROCESSOR DETAIL ======== -->
+<!-- Message Processors -->
+<h2>Message Processors</h2>
+
+
+    
+    
+
+
+<A NAME="send-from-template"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;send-grid:send-from-template&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        
+      
+  </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>key</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>subject</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+          
+                
+          
+          
+          
+        </table>
+  </div>
+  
+      <div class="jd-tagdata">
+          <h5 class="jd-tagtitle">Child Elements</h5>
+            <table id="lconfig" class="jd-sumtable">
+              
+              <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th></td>
+              
+                
+              
+                
+              
+                
+                    <tr>
+                        <td><nobr>&lt;send-grid:send-to&gt;</nobr></td>
+                        <td></td>
+                        <td></td>
+                        <td>List&lt;String&gt;</td>
+                    </tr>
+                
+                
+              
+                
+                    <tr>
+                        <td><nobr>&lt;send-grid:substitutions&gt;</nobr></td>
+                        <td>#[payload]</td>
+                        <td></td>
+                        <td>Map&lt;String,&nbsp;Object&gt;</td>
+                    </tr>
+                
+                
+              
+          </table>
+      </div>
+  
+  
+    
+  
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
+        <tr>
+            <td><a href="../java/org/mule/modules/sendgrid/exception/SendGridConnectorException.html">SendGridConnectorException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="send-simple-email"></A>
+
+<div class="jd-details api apilevel-">
+    <h4 class="jd-details-title">
+      <span class="sympad">&lt;send-grid:send-simple-email&gt;</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>
+      
+        
+      
+  </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Attributes</h5>
+
+        <table id="lconfig" class="jd-sumtable">
+        <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th><th>MIME Type</th><th>Encoding</th></tr>
+        <tr>
+          <td class="jd-linkcol"><nobr>config-ref</nobr></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol" width="100%"><i>Optional.&nbsp;</i>Specify which configuration to use.</td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+          <td class="jd-descrcol"></td>
+        </tr>
+          
+          
+                
+                    
+                        <tr class=" api apilevel-" >
+                            <td class="jd-linkcol"><nobr>subject</nobr></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+                
+          
+                
+                    
+                        <tr class="alt-color api apilevel-" >
+                            <td class="jd-linkcol"><nobr>text</nobr></td>
+                            <td class="jd-descrcol">#[payload]</td>
+                            <td class="jd-descrcol"></td>
+                            <td class="jd-descrcol">String</td>
+                            <td class="jd-descrcol">*/*</td>
+                            <td class="jd-descrcol">UTF-8</td>
+                        </tr>
+                    
+                
+                
+          
+          
+          
+        </table>
+  </div>
+  
+      <div class="jd-tagdata">
+          <h5 class="jd-tagtitle">Child Elements</h5>
+            <table id="lconfig" class="jd-sumtable">
+              
+              <tr><th>Name</th><th>Default Value</th><th>Description</th><th>Java Type</th></td>
+              
+                
+              
+                
+                    <tr>
+                        <td><nobr>&lt;send-grid:send-to&gt;</nobr></td>
+                        <td></td>
+                        <td></td>
+                        <td>List&lt;String&gt;</td>
+                    </tr>
+                
+                
+              
+                
+              
+          </table>
+      </div>
+  
+  
+    
+  
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Exception Payloads</h5>
+      <table class="jd-sumtable">
+        <tr><th>Payload Class</th><th>Description</th></tr>
+        
+        <tr>
+            <td><a href="../java/org/mule/modules/sendgrid/exception/SendGridConnectorException.html">SendGridConnectorException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+    
+
+
+
+
+
+<!-- ========= MESSAGE SOURCES DETAIL ======== -->
+<!-- Message Sources -->
+<h2>Message Sources</h2>
+
+
+    
+
+
+
+
+
+<!-- ========= MESSAGE SOURCES DETAIL ======== -->
+<!-- Transformers -->
+<h2>Transformers</h2>
+
+
+    
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

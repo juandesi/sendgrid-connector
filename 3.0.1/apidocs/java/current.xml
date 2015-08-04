@@ -1,0 +1,2382 @@
+<api>
+<package name="org.mule.modules.sendgrid"
+>
+<class name="SendGridConnector"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConnector"
+ type="org.mule.modules.sendgrid.SendGridConnector"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getConfig"
+ return="org.mule.modules.sendgrid.strategy.SendGridConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="sendFromTemplate"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="java.lang.String">
+</parameter>
+<parameter name="subject" type="java.lang.String">
+</parameter>
+<parameter name="sendTo" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<parameter name="substitutions" type="java.util.Map&lt;java.lang.String, java.lang.Object&gt;">
+</parameter>
+<exception name="SendGridConnectorException" type="org.mule.modules.sendgrid.exception.SendGridConnectorException">
+</exception>
+</method>
+<method name="sendSimpleEmail"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="subject" type="java.lang.String">
+</parameter>
+<parameter name="sendTo" type="java.util.List&lt;java.lang.String&gt;">
+</parameter>
+<parameter name="text" type="java.lang.String">
+</parameter>
+<exception name="SendGridConnectorException" type="org.mule.modules.sendgrid.exception.SendGridConnectorException">
+</exception>
+</method>
+<method name="setConfig"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="config" type="org.mule.modules.sendgrid.strategy.SendGridConfiguration">
+</parameter>
+</method>
+<field name="config"
+ type="org.mule.modules.sendgrid.strategy.SendGridConfiguration"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility=""
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.adapter"
+>
+<interface name="PoolManager"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getLifecyleEnabledObjectPool"
+ return="org.mule.util.pool.LifecyleEnabledObjectPool"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+</package>
+<package name="org.mule.modules.sendgrid.adapters"
+>
+<class name="SendGridConnectorCapabilitiesAdapter"
+ extends="org.mule.modules.sendgrid.SendGridConnector"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConnectorCapabilitiesAdapter"
+ type="org.mule.modules.sendgrid.adapters.SendGridConnectorCapabilitiesAdapter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="isCapableOf"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="capability" type="org.mule.api.devkit.capability.ModuleCapability">
+</parameter>
+</method>
+</class>
+<class name="SendGridConnectorConnectionManagementAdapter"
+ extends="org.mule.modules.sendgrid.adapters.SendGridConnectorProcessAdapter"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.devkit.internal.connection.management.ConnectionManagementConnectorAdapter">
+</implements>
+<constructor name="SendGridConnectorConnectionManagementAdapter"
+ type="org.mule.modules.sendgrid.adapters.SendGridConnectorConnectionManagementAdapter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+</class>
+<class name="SendGridConnectorLifecycleInjectionAdapter"
+ extends="org.mule.modules.sendgrid.adapters.SendGridConnectorMetadataAdapter"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.api.lifecycle.Initialisable">
+</implements>
+<constructor name="SendGridConnectorLifecycleInjectionAdapter"
+ type="org.mule.modules.sendgrid.adapters.SendGridConnectorLifecycleInjectionAdapter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="dispose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="initialise"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="InitialisationException" type="org.mule.api.lifecycle.InitialisationException">
+</exception>
+</method>
+<method name="start"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MuleException" type="org.mule.api.MuleException">
+</exception>
+</method>
+<method name="stop"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="MuleException" type="org.mule.api.MuleException">
+</exception>
+</method>
+</class>
+<class name="SendGridConnectorMetadataAdapter"
+ extends="org.mule.modules.sendgrid.adapters.SendGridConnectorCapabilitiesAdapter"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConnectorMetadataAdapter"
+ type="org.mule.modules.sendgrid.adapters.SendGridConnectorMetadataAdapter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getDevkitBuild"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getDevkitVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMinMuleVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getModuleName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getModuleVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="DEVKIT_BUILD"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;mule-devkit-3.7.0.2589.361fd9f&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="DEVKIT_VERSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;3.7.0&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="MIN_MULE_VERSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;3.5.0&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="MODULE_NAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;SendGrid&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="MODULE_VERSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;2.0.1&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="SendGridConnectorProcessAdapter"
+ extends="org.mule.modules.sendgrid.adapters.SendGridConnectorLifecycleInjectionAdapter"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConnectorProcessAdapter"
+ type="org.mule.modules.sendgrid.adapters.SendGridConnectorProcessAdapter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getProcessTemplate"
+ return="org.mule.api.devkit.ProcessTemplate&lt;P, org.mule.modules.sendgrid.adapters.SendGridConnectorCapabilitiesAdapter&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.agents"
+>
+<class name="DefaultSplashScreenAgent"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.api.agent.Agent">
+</implements>
+<implements name="org.mule.modules.sendgrid.devkit.SplashScreenAgent">
+</implements>
+<constructor name="DefaultSplashScreenAgent"
+ type="org.mule.modules.sendgrid.agents.DefaultSplashScreenAgent"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="dispose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getDescription"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getExtensionsCount"
+ return="int"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMuleContext"
+ return="org.mule.api.MuleContext"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="initialise"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setMuleContext"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="org.mule.api.MuleContext">
+</parameter>
+</method>
+<method name="setName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="name" type="java.lang.String">
+</parameter>
+</method>
+<method name="splash"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="start"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="stop"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="extensionsCount"
+ type="int"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="muleContext"
+ type="org.mule.api.MuleContext"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.category"
+>
+<class name="TemplateMetadataCategory"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TemplateMetadataCategory"
+ type="org.mule.modules.sendgrid.category.TemplateMetadataCategory"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="getConnector"
+ return="org.mule.modules.sendgrid.SendGridConnector"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMetaData"
+ return="org.mule.common.metadata.MetaData"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="org.mule.common.metadata.MetaDataKey">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="getMetaDataKeys"
+ return="java.util.List&lt;org.mule.common.metadata.MetaDataKey&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="setConnector"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="connector" type="org.mule.modules.sendgrid.SendGridConnector">
+</parameter>
+</method>
+<field name="connector"
+ type="org.mule.modules.sendgrid.SendGridConnector"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.config"
+>
+<class name="SendFromTemplateDefinitionParser"
+ extends="org.mule.security.oauth.config.AbstractDevkitBasedDefinitionParser"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendFromTemplateDefinitionParser"
+ type="org.mule.modules.sendgrid.config.SendFromTemplateDefinitionParser"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="parse"
+ return="org.springframework.beans.factory.config.BeanDefinition"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="element" type="org.w3c.dom.Element">
+</parameter>
+<parameter name="parserContext" type="org.springframework.beans.factory.xml.ParserContext">
+</parameter>
+</method>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="SendGridConnectorSendGridConfigurationConfigDefinitionParser"
+ extends="org.mule.security.oauth.config.AbstractDevkitBasedDefinitionParser"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConnectorSendGridConfigurationConfigDefinitionParser"
+ type="org.mule.modules.sendgrid.config.SendGridConnectorSendGridConfigurationConfigDefinitionParser"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="moduleName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="parse"
+ return="org.springframework.beans.factory.config.BeanDefinition"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="element" type="org.w3c.dom.Element">
+</parameter>
+<parameter name="parserContext" type="org.springframework.beans.factory.xml.ParserContext">
+</parameter>
+</method>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="SendGridNamespaceHandler"
+ extends="org.springframework.beans.factory.xml.NamespaceHandlerSupport"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridNamespaceHandler"
+ type="org.mule.modules.sendgrid.config.SendGridNamespaceHandler"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="init"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="SendSimpleEmailDefinitionParser"
+ extends="org.mule.security.oauth.config.AbstractDevkitBasedDefinitionParser"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendSimpleEmailDefinitionParser"
+ type="org.mule.modules.sendgrid.config.SendSimpleEmailDefinitionParser"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="parse"
+ return="org.springframework.beans.factory.config.BeanDefinition"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="element" type="org.w3c.dom.Element">
+</parameter>
+<parameter name="parserContext" type="org.springframework.beans.factory.xml.ParserContext">
+</parameter>
+</method>
+<field name="logger"
+ type="org.slf4j.Logger"
+ transient="false"
+ volatile="false"
+ static="true"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.connectivity"
+>
+<class name="ConnectionManagementConfigSendGridConnectorConnectionKey"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.devkit.internal.connection.management.ConnectionManagementConnectionKey">
+</implements>
+<constructor name="ConnectionManagementConfigSendGridConnectorConnectionKey"
+ type="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="getPassword"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getUsername"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setPassword"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="setUsername"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<field name="password"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="username"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="SendGridConfigurationSendGridConnectorAdapter"
+ extends="org.mule.modules.sendgrid.strategy.SendGridConfiguration"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.devkit.internal.connection.management.ConnectionManagementConnectionAdapter">
+</implements>
+<constructor name="SendGridConfigurationSendGridConnectorAdapter"
+ type="org.mule.modules.sendgrid.connectivity.SendGridConfigurationSendGridConnectorAdapter"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="connect"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="connectionKey" type="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey">
+</parameter>
+<exception name="ConnectionException" type="org.mule.api.ConnectionException">
+</exception>
+</method>
+<method name="getStrategy"
+ return="org.mule.modules.sendgrid.strategy.SendGridConfiguration"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="test"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="connectionKey" type="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey">
+</parameter>
+<exception name="ConnectionException" type="org.mule.api.ConnectionException">
+</exception>
+</method>
+</class>
+<class name="SendGridConnectorConfigConnectionManagementConnectionManager"
+ extends="org.mule.devkit.processor.ExpressionEvaluatorSupport"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.api.lifecycle.Initialisable">
+</implements>
+<constructor name="SendGridConnectorConfigConnectionManagementConnectionManager"
+ type="org.mule.modules.sendgrid.connectivity.SendGridConnectorConfigConnectionManagementConnectionManager"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="acquireConnection"
+ return="org.mule.modules.sendgrid.adapters.SendGridConnectorConnectionManagementAdapter"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="destroyConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey">
+</parameter>
+<parameter name="connection" type="org.mule.modules.sendgrid.adapters.SendGridConnectorConnectionManagementAdapter">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="dispose"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getConnectionAdapter"
+ return="org.mule.devkit.internal.connection.management.ConnectionManagementConnectionAdapter"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="adapter" type="org.mule.devkit.internal.connection.management.ConnectionManagementConnectorAdapter">
+</parameter>
+</method>
+<method name="getConnectionKey"
+ return="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="messageProcessor" type="org.mule.api.processor.MessageProcessor">
+</parameter>
+<parameter name="event" type="org.mule.api.MuleEvent">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="getDefaultConnectionKey"
+ return="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getDevkitBuild"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getDevkitVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getEmail"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getEvaluatedConnectionKey"
+ return="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="event" type="org.mule.api.MuleEvent">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="getMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="metaDataKey" type="org.mule.common.metadata.MetaDataKey">
+</parameter>
+</method>
+<method name="getMetaDataKeys"
+ return="org.mule.common.Result&lt;java.util.List&lt;org.mule.common.metadata.MetaDataKey&gt;&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMinMuleVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getModuleName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getModuleVersion"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getMuleContext"
+ return="org.mule.api.MuleContext"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getPassword"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getPoolingProfile"
+ return="org.mule.config.PoolingProfile"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getProcessTemplate"
+ return="org.mule.api.devkit.ProcessTemplate&lt;P, org.mule.modules.sendgrid.adapters.SendGridConnectorConnectionManagementAdapter&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getRetryPolicyTemplate"
+ return="org.mule.api.retry.RetryPolicyTemplate"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getSenderName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getUsername"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="initialise"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isCapableOf"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="capability" type="org.mule.api.devkit.capability.ModuleCapability">
+</parameter>
+</method>
+<method name="newConnection"
+ return="org.mule.devkit.internal.connection.management.ConnectionManagementConnectionAdapter"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="newConnector"
+ return="org.mule.devkit.internal.connection.management.ConnectionManagementConnectorAdapter"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="connection" type="org.mule.devkit.internal.connection.management.ConnectionManagementConnectionAdapter&lt;org.mule.modules.sendgrid.strategy.SendGridConfiguration, org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey&gt;">
+</parameter>
+</method>
+<method name="releaseConnection"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="key" type="org.mule.modules.sendgrid.connectivity.ConnectionManagementConfigSendGridConnectorConnectionKey">
+</parameter>
+<parameter name="connection" type="org.mule.modules.sendgrid.adapters.SendGridConnectorConnectionManagementAdapter">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="setEmail"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="setMuleContext"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="org.mule.api.MuleContext">
+</parameter>
+</method>
+<method name="setPassword"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="setPoolingProfile"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="org.mule.config.PoolingProfile">
+</parameter>
+</method>
+<method name="setRetryPolicyTemplate"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="org.mule.api.retry.RetryPolicyTemplate">
+</parameter>
+</method>
+<method name="setSenderName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="setUsername"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.String">
+</parameter>
+</method>
+<method name="test"
+ return="org.mule.common.TestResult"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="DEVKIT_BUILD"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;mule-devkit-3.7.0.2589.361fd9f&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="DEVKIT_VERSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;3.7.0&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="MIN_MULE_VERSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;3.5.0&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="MODULE_NAME"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;SendGrid&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="MODULE_VERSION"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ value="&quot;2.0.1&quot;"
+ static="true"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="connectionPool"
+ type="org.apache.commons.pool.KeyedObjectPool"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="email"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="muleContext"
+ type="org.mule.api.MuleContext"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="password"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="poolingProfile"
+ type="org.mule.config.PoolingProfile"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="retryPolicyTemplate"
+ type="org.mule.api.retry.RetryPolicyTemplate"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="senderName"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="username"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.devkit"
+>
+<interface name="SplashScreenAgent"
+ abstract="true"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<method name="getExtensionsCount"
+ return="int"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="splash"
+ return="void"
+ abstract="true"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+</interface>
+</package>
+<package name="org.mule.modules.sendgrid.exception"
+>
+<class name="SendGridConnectorException"
+ extends="java.lang.Exception"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConnectorException"
+ type="org.mule.modules.sendgrid.exception.SendGridConnectorException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="message" type="java.lang.String">
+</parameter>
+<parameter name="cause" type="java.lang.Throwable">
+</parameter>
+</constructor>
+<constructor name="SendGridConnectorException"
+ type="org.mule.modules.sendgrid.exception.SendGridConnectorException"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="cause" type="java.lang.Throwable">
+</parameter>
+</constructor>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.model"
+>
+<class name="TemplateResolver"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TemplateResolver"
+ type="org.mule.modules.sendgrid.model.TemplateResolver"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="user" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="getTemplateAsString"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="tempID" type="java.lang.String">
+</parameter>
+</method>
+<method name="getTemplates"
+ return="java.util.Map&lt;java.lang.String, java.lang.String&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<field name="client"
+ type="javax.ws.rs.client.Client"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+<class name="TemplateResolver.Authenticator"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="TemplateResolver.Authenticator"
+ type="org.mule.modules.sendgrid.model.TemplateResolver.Authenticator"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="user" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="filter"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="requestContext" type="javax.ws.rs.client.ClientRequestContext">
+</parameter>
+<exception name="IOException" type="java.io.IOException">
+</exception>
+</method>
+<field name="password"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="user"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="true"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.pooling"
+>
+<class name="DevkitGenericKeyedObjectPool"
+ extends="org.apache.commons.pool.impl.GenericKeyedObjectPool"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="DevkitGenericKeyedObjectPool"
+ type="org.mule.modules.sendgrid.pooling.DevkitGenericKeyedObjectPool"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="factory" type="org.apache.commons.pool.KeyedPoolableObjectFactory">
+</parameter>
+<parameter name="connectionPoolingProfile" type="org.mule.config.PoolingProfile">
+</parameter>
+</constructor>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.processors"
+>
+<class name="SendFromTemplateMessageProcessor"
+ extends="org.mule.devkit.processor.DevkitBasedMessageProcessor"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.api.processor.MessageProcessor">
+</implements>
+<constructor name="SendFromTemplateMessageProcessor"
+ type="org.mule.modules.sendgrid.processors.SendFromTemplateMessageProcessor"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="operationName" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="doProcess"
+ return="org.mule.api.MuleEvent"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="event" type="org.mule.api.MuleEvent">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="getGenericMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="metaDataKey" type="org.mule.common.metadata.MetaDataKey">
+</parameter>
+</method>
+<method name="getInputMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getOutputMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="inputMetadata" type="org.mule.common.metadata.MetaData">
+</parameter>
+</method>
+<method name="setKey"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setSendTo"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setSubject"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setSubstitutions"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<field name="_keyType"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="_sendToType"
+ type="java.util.List"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="_subjectType"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="_substitutionsType"
+ type="java.util.Map"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="key"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="sendTo"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="subject"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="substitutions"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+</class>
+<class name="SendSimpleEmailMessageProcessor"
+ extends="org.mule.devkit.processor.DevkitBasedMessageProcessor"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<implements name="org.mule.api.processor.MessageProcessor">
+</implements>
+<constructor name="SendSimpleEmailMessageProcessor"
+ type="org.mule.modules.sendgrid.processors.SendSimpleEmailMessageProcessor"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="operationName" type="java.lang.String">
+</parameter>
+</constructor>
+<method name="doProcess"
+ return="org.mule.api.MuleEvent"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="event" type="org.mule.api.MuleEvent">
+</parameter>
+<exception name="Exception" type="java.lang.Exception">
+</exception>
+</method>
+<method name="getGenericMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="metaDataKey" type="org.mule.common.metadata.MetaDataKey">
+</parameter>
+</method>
+<method name="getInputMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getOutputMetaData"
+ return="org.mule.common.Result&lt;org.mule.common.metadata.MetaData&gt;"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="inputMetadata" type="org.mule.common.metadata.MetaData">
+</parameter>
+</method>
+<method name="setSendTo"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setSubject"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<method name="setText"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="value" type="java.lang.Object">
+</parameter>
+</method>
+<field name="_sendToType"
+ type="java.util.List"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="_subjectType"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="_textType"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="sendTo"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="subject"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+<field name="text"
+ type="java.lang.Object"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="protected"
+>
+</field>
+</class>
+</package>
+<package name="org.mule.modules.sendgrid.strategy"
+>
+<class name="SendGridConfiguration"
+ extends="java.lang.Object"
+ abstract="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<constructor name="SendGridConfiguration"
+ type="org.mule.modules.sendgrid.strategy.SendGridConfiguration"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</constructor>
+<method name="connect"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+<exception name="ConnectionException" type="org.mule.api.ConnectionException">
+</exception>
+</method>
+<method name="connectionId"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="disconnect"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getEmail"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getSenderName"
+ return="java.lang.String"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getSendgrid"
+ return="com.sendgrid.SendGrid"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="getTemplateResolver"
+ return="org.mule.modules.sendgrid.model.TemplateResolver"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="isConnected"
+ return="boolean"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+</method>
+<method name="setEmail"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="email" type="java.lang.String">
+</parameter>
+</method>
+<method name="setSenderName"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="senderName" type="java.lang.String">
+</parameter>
+</method>
+<method name="setSendgrid"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="sendgrid" type="com.sendgrid.SendGrid">
+</parameter>
+</method>
+<method name="setTemplateResolver"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="templateResolver" type="org.mule.modules.sendgrid.model.TemplateResolver">
+</parameter>
+</method>
+<method name="testConnect"
+ return="void"
+ abstract="false"
+ native="false"
+ synchronized="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="public"
+>
+<parameter name="username" type="java.lang.String">
+</parameter>
+<parameter name="password" type="java.lang.String">
+</parameter>
+<exception name="ConnectionException" type="org.mule.api.ConnectionException">
+</exception>
+</method>
+<field name="email"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="senderName"
+ type="java.lang.String"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="sendgrid"
+ type="com.sendgrid.SendGrid"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+<field name="templateResolver"
+ type="org.mule.modules.sendgrid.model.TemplateResolver"
+ transient="false"
+ volatile="false"
+ static="false"
+ final="false"
+ deprecated="not deprecated"
+ visibility="private"
+>
+</field>
+</class>
+</package>
+</api>

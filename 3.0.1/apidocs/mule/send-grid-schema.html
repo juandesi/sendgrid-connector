@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule SendGrid Anypoint Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+<title>
+
+  SendGridConnector
+
+
+| Mule SendGrid Anypoint Connector
+
+</title>
+<link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../", "../assets/");
+</script>
+<script src="../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule SendGrid Anypoint Connector</span>
+    
+    <ul id="header-tabs" class="mule">
+    
+    	<li id="guide"><a href="../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../')"
+                      onkeyup="return search_changed(event, false, '../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+<div class="g-unit" id="all-content">
+
+<div id="api-info-block">
+
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF MODULE DATA ======== -->
+
+<div id="jd-header">
+    org.mule.modules
+<h1>send-grid-connector</h1>
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+
+
+<div class="jd-tagdata">
+      <table class="jd-tagtable">
+        <tbody><tr>
+          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/send-grid</td>
+        </tr><tr>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/send-grid/current/mule-send-grid.xsd&nbsp;&nbsp;(<a href="send-grid-schema.html">View Schema</a>)</td>
+        </tr>
+<tr>
+          <th>Schema Version</th><td>1.0</td>
+        </tr>
+<tr>
+          <th>Minimum Mule Version</th><td>3.2</td>
+        </tr>
+    </tbody></table>
+  </div>
+
+<div class="jd-descr">
+<h2>Schema</h2>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;xs:schema xmlns:ns2=&quot;http://www.mulesoft.org/schema/mule/devkit&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; targetNamespace=&quot;http://www.mulesoft.org/schema/mule/send-grid&quot; attributeFormDefault=&quot;unqualified&quot; elementFormDefault=&quot;qualified&quot;&gt;
+  &lt;xs:import namespace=&quot;http://www.w3.org/XML/1998/namespace&quot;&gt;&lt;/xs:import&gt;
+  &lt;xs:import namespace=&quot;http://www.springframework.org/schema/beans&quot; schemaLocation=&quot;http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;&lt;/xs:import&gt;
+  &lt;xs:import namespace=&quot;http://www.mulesoft.org/schema/mule/core&quot; schemaLocation=&quot;http://www.mulesoft.org/schema/mule/core/current/mule.xsd&quot;&gt;&lt;/xs:import&gt;
+  &lt;xs:element xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; substitutionGroup=&quot;mule:abstract-extension&quot; name=&quot;config&quot;&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:complexContent&gt;
+        &lt;xs:extension base=&quot;mule:abstractExtensionType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;OAuth2 Connection Strategy&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+          &lt;xs:sequence&gt;
+            &lt;xs:element type=&quot;mule:poolingProfileType&quot; minOccurs=&quot;0&quot; name=&quot;connection-pooling-profile&quot;&gt;
+              &lt;xs:annotation&gt;
+                &lt;xs:documentation&gt;Characteristics of the connection pool.&lt;/xs:documentation&gt;
+              &lt;/xs:annotation&gt;
+            &lt;/xs:element&gt;
+            &lt;xs:element minOccurs=&quot;0&quot; ref=&quot;mule:abstract-reconnection-strategy&quot;&gt;
+              &lt;xs:annotation&gt;
+                &lt;xs:documentation&gt;Reconnection strategy that defines how Mule should handle a connection failure.&lt;/xs:documentation&gt;
+              &lt;/xs:annotation&gt;
+            &lt;/xs:element&gt;
+          &lt;/xs:sequence&gt;
+          &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;name&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;Give a name to this configuration so it can be later referenced by config-ref.&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;email&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;senderName&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;username&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;password&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:complexContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/send-grid&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; type=&quot;SendSimpleEmailType&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; name=&quot;send-simple-email&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;SendSimpleEmailType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot; name=&quot;send-to&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:sequence&gt;
+                &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;send-to&quot;&gt;
+                  &lt;xs:complexType&gt;
+                    &lt;xs:simpleContent&gt;
+                      &lt;xs:extension base=&quot;xs:string&quot;&gt;
+                        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;value-ref&quot;&gt;&lt;/xs:attribute&gt;
+                      &lt;/xs:extension&gt;
+                    &lt;/xs:simpleContent&gt;
+                  &lt;/xs:complexType&gt;
+                &lt;/xs:element&gt;
+              &lt;/xs:sequence&gt;
+              &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;ref&quot;&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:attribute&gt;
+            &lt;/xs:complexType&gt;
+          &lt;/xs:element&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;config-ref&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;subject&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; default=&quot;#[payload]&quot; name=&quot;text&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/send-grid&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; type=&quot;SendFromTemplateType&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; name=&quot;send-from-template&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;SendFromTemplateType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element minOccurs=&quot;1&quot; maxOccurs=&quot;1&quot; name=&quot;send-to&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:sequence&gt;
+                &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;send-to&quot;&gt;
+                  &lt;xs:complexType&gt;
+                    &lt;xs:simpleContent&gt;
+                      &lt;xs:extension base=&quot;xs:string&quot;&gt;
+                        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;value-ref&quot;&gt;&lt;/xs:attribute&gt;
+                      &lt;/xs:extension&gt;
+                    &lt;/xs:simpleContent&gt;
+                  &lt;/xs:complexType&gt;
+                &lt;/xs:element&gt;
+              &lt;/xs:sequence&gt;
+              &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;ref&quot;&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:attribute&gt;
+            &lt;/xs:complexType&gt;
+          &lt;/xs:element&gt;
+          &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot; name=&quot;substitutions&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:choice&gt;
+                &lt;xs:sequence&gt;
+                  &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; name=&quot;substitution&quot;&gt;
+                    &lt;xs:complexType&gt;
+                      &lt;xs:simpleContent&gt;
+                        &lt;xs:extension base=&quot;xs:string&quot;&gt;
+                          &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;value-ref&quot;&gt;&lt;/xs:attribute&gt;
+                          &lt;xs:attribute type=&quot;xs:string&quot; name=&quot;key&quot;&gt;&lt;/xs:attribute&gt;
+                        &lt;/xs:extension&gt;
+                      &lt;/xs:simpleContent&gt;
+                    &lt;/xs:complexType&gt;
+                  &lt;/xs:element&gt;
+                &lt;/xs:sequence&gt;
+                &lt;xs:sequence&gt;
+                  &lt;xs:any minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; processContents=&quot;lax&quot;&gt;&lt;/xs:any&gt;
+                &lt;/xs:sequence&gt;
+              &lt;/xs:choice&gt;
+              &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;optional&quot; name=&quot;ref&quot;&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:attribute&gt;
+            &lt;/xs:complexType&gt;
+          &lt;/xs:element&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;config-ref&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;key&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute type=&quot;xs:string&quot; use=&quot;required&quot; name=&quot;subject&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:simpleType name=&quot;OnNoTokenPolicyEnumType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:enumeration value=&quot;EXCEPTION&quot;&gt;&lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;STOP_FLOW&quot;&gt;&lt;/xs:enumeration&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;integerType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:integer&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;decimalType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:decimal&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;floatType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:float&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;doubleType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:double&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;dateTimeType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:dateTime&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;longType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:long&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;byteType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:byte&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;booleanType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:boolean&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;anyUriType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:anyURI&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;charType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:minLength value=&quot;1&quot;&gt;&lt;/xs:minLength&gt;
+          &lt;xs:maxLength value=&quot;1&quot;&gt;&lt;/xs:maxLength&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+&lt;/xs:schema&gt;</pre>
+</div><!-- jd-descr -->
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

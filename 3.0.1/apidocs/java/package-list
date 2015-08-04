@@ -1,0 +1,14 @@
+org.mule.modules.sendgrid
+org.mule.modules.sendgrid.adapter
+org.mule.modules.sendgrid.adapters
+org.mule.modules.sendgrid.agents
+org.mule.modules.sendgrid.category
+org.mule.modules.sendgrid.config
+org.mule.modules.sendgrid.connectivity
+org.mule.modules.sendgrid.devkit
+org.mule.modules.sendgrid.exception
+org.mule.modules.sendgrid.model
+org.mule.modules.sendgrid.pooling
+org.mule.modules.sendgrid.processors
+org.mule.modules.sendgrid.strategy
+
